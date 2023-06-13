@@ -1,0 +1,407 @@
+{
+  "name": "v6_X-NUCLEO-IHM08M1_change_AOKU_HW",
+  "type": "power",
+  "descVersion": 3,
+  "PN": "X-NUCLEO-IHM08M1",
+  "link": "https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-move-actuate-hw/x-nucleo-ihm08m1.html",
+  "longDescription": "Low-Voltage BLDC motor driver expansion board based on STL220N6F7 for STM32 Nucleo",
+  "shortDescription": "PMSM & BLDC power board based on STL220N6F7 for STM32 Nucleo",
+  "motorDrives": [
+    {
+      "name": "M1",
+      "minRatedVoltage": 10,
+      "maxRatedVoltage": 48,
+      "maxRatedCurrent": 30,
+      "connectorType": "morpho",
+      "features": [
+        {
+          "name": "CurrentSensing",
+          "type": "CurrentSensing",
+          "tRise": 2000,
+          "hwVariants": [
+            {
+              "type": "ThreeShunt_AmplifiedCurrents",
+              "help": "Soldering the pins SENS2 to Vshunt_2 of connector J5 and the pins SENS3 to Vshunt_3 of the connector J6",
+              "signals": {
+                "CURRENT_AMPL_U": [
+                  {
+                    "name": "MR11",
+                    "help": "CN10.11.Factory default. Solder R50",
+                    "cost": 10
+                  }
+                ],
+                "CURRENT_AMPL_V": [
+                  {
+                    "name": "ML32",
+                    "help": "CN7.32. Factory default. Solder R48.",
+                    "cost": 10
+                  }
+                ],
+                "CURRENT_AMPL_W": [
+                  {
+                    "name": "ML28",
+                    "help": "",
+                    "cost": 10
+                  }
+                ]
+              },
+              "shuntResistor": 0.01,
+              "amplifyingNetworkImax": 30,
+              "amplifyingNetworkVm": 3.3,
+              "amplifyingNetworkPrating": 4,
+              "offsetNetworkAttenuation": 1.0,
+              "opAmpGain": 10,
+              "polarizationOffset": 1.710
+            },
+            {
+              "type": "SingleShunt_AmplifiedCurrents",
+              "help": "Soldering the pins SENS1 to Vshunt_2 of connector J5 and the pins SENS3 to Vshunt_2 of the connector J6",
+              "signals": {
+                "CURRENT_AMPL": [
+                  {
+                    "name": "ML36",
+                    "help": "CN7.36. Factory default. Solder R48.",
+                    "cost": 10
+                  }
+                ]
+              },
+              "shuntResistor": 0.01,
+              "amplifyingNetworkImax": 30,
+              "amplifyingNetworkVm": 3.3,
+              "amplifyingNetworkPrating": 4,
+              "offsetNetworkAttenuation": 0.909,
+              "opAmpGain": 5.7,
+              "polarizationOffset": 1.710
+            },
+            {
+              "type": "SingleShunt_AmplifiedCurrents_noOffset",
+              "help": "Soldering the pins SENS1 to Vshunt_2 of connector J5 and the pins SENS3 to Vshunt_2 of the connector J6. Make sure that jumpers JP1 and JP2 are open",
+              "signals": {
+                "CURRENT_AMPL": [
+                  {
+                    "name": "ML36",
+                    "help": "CN7.36. Factory default. Solder R48.",
+                    "cost": 0
+                  }
+                ]
+              },
+              "shuntResistor": 0.01,
+              "amplifyingNetworkImax": 31.7,
+              "amplifyingNetworkVm": 3.3,
+              "amplifyingNetworkPrating": 4,
+              "opAmpGain": 10.4
+            }
+          ]
+        },
+        {
+          "name": "PhaseVoltageGeneration",
+          "type": "PhaseVoltageGeneration",
+          "driverName": "L6398 DMOS driver",
+          "driverPN": "L6398",
+          "minDeadTime": 700,
+          "maxSwitchingFreq": 100,
+          "tNoise": 1000,
+          "hwVariants": [
+            {
+              "type": "DrivingHighAndLowSides",
+              "help": "How to enable this variant",
+              "signals": {
+                "PWM_CHU_H": [
+                  {
+                    "name": "MR23",
+                    "help": "CN10.23. Factory default. Solder R56.",
+                    "cost": 0
+                  }
+                ],
+                "PWM_CHV_H": [
+                  {
+                    "name": "MR21",
+                    "help": "CN10.21. Factory default. Solder R64.",
+                    "cost": 0
+                  }
+                ],
+                "PWM_CHW_H": [
+                  {
+                    "name": "MR33",
+                    "help": "CN10.33. Factory default. Solder R70.",
+                    "cost": 0
+                  }
+                ],
+                "PWM_CHU_L": [
+                  {
+                    "name": "MR15",
+                    "help": "CN10.15. Factory Default. Solder R58",
+                    "cost": 0
+                  },
+                  {
+                    "name": "MR26",
+                    "help": "CN10.26. Factory Default. Solder R86",
+                    "cost": 0
+                  }
+                ],
+                "PWM_CHV_L": [
+                  {
+                    "name": "MR17",
+                    "help": "",
+                    "cost": 0
+                  }
+                ],
+                "PWM_CHW_L": [
+                  {
+                    "name": "ML34",
+                    "help": "",
+                    "cost": 0
+                  }
+                ]
+              },
+              "highSideSwitchesDrivingPolarity": "Active high",
+              "lowSideSwitchesDrivingPolarity": "Active high",
+              "deadTime": 1500
+            }
+          ]
+        },
+        {
+          "name": "SpeedAndPositionSensing",
+          "type": "SpeedAndPositionSensing",
+          "hwVariants": [
+            {
+              "type": "HallEffectSensor",
+              "help": "How to enable this variant",
+              "signals": {
+                "HALLSENSOR_H1": [
+                  {
+                    "name": "ML17",
+                    "help": "CN7.17. Factory default. Solder R79",
+                    "cost": 0
+                  }
+                ],
+                "HALLSENSOR_H2": [
+                  {
+                    "name": "MR31",
+                    "help": "CN10.31. Factory default. Solder R81",
+                    "cost": 0
+                  }
+                ],
+                "HALLSENSOR_H3": [
+                  {
+                    "name": "MR25",
+                    "help": "CN10.25. Factory default. Solder R84",
+                    "cost": 0
+                  }
+                ]
+              }
+            },
+            {
+              "type": "QuadratureEncoderRelative",
+              "help": "How to enable this variant",
+              "signals": {
+                "QENC_A": [
+                  {
+                    "name": "ML17",
+                    "help": "CN7.17. Factory default. Solder R79.",
+                    "cost": 0
+                  }
+                ],
+                "QENC_B": [
+                  {
+                    "name": "MR31",
+                    "help": "CN10.31. Factory default. Solder R81",
+                    "cost": 0
+                  }
+                ]
+              }
+            },
+            {
+              "type": "QuadratureEncoderAbsolute",
+              "help": "How to enable this variant",
+              "signals": {
+                "QENC_A": [
+                  {
+                    "name": "ML17",
+                    "help": "CN7.17. Factory default. Solder R79.",
+                    "cost": 0
+                  }
+                ],
+                "QENC_B": [
+                  {
+                    "name": "MR31",
+                    "help": "CN10.31. Factory default. Solder R81",
+                    "cost": 0
+                  }
+                ],
+                "QENC_Z": [
+                  {
+                    "name": "MR25",
+                    "help": "CN10.25. Factory default. Solder R84",
+                    "cost": 0
+                  }
+                ]
+              }
+            },
+            {
+              "type": "BEMFSensingADC",
+              "help": "How to enable this variant",
+              "signals": {
+                "BEMF_U": [
+                  {
+                    "name": "ML37",
+                    "help": "CN7.37. Factory default. Solder R59",
+                    "cost": 0
+                  }
+                ],
+                "BEMF_V": [
+                  {
+                    "name": "MR34",
+                    "help": "CN10.34. Factory default. Solder R61",
+                    "cost": 0
+                  },
+                  {
+                    "name": "MR18",
+                    "help": "CN10.18. Factory default. Solder R60",
+                    "cost": 0
+                  }
+                ],
+                "BEMF_W": [
+                  {
+                    "name": "MR6",
+                    "help": "CN10.6. Factory default. Solder R65",
+                    "cost": 0
+                  },
+                  {
+                    "name": "MR30",
+                    "help": "CN10.30. Factory default. Solder R62",
+                    "cost": 0
+                  },
+                  {
+                    "name": "ML36",
+                    "help": "CN10.11. Factory default. Solder R63",
+                    "cost": 0
+                  }
+                ],
+                "BEMF_DIVIDER": [
+                  {
+                    "name": "MR1",
+                    "help": "CN10.1",
+                    "cost": 0
+                  }
+                ]
+              },
+              "dividingNetworkR1": 10000,
+              "dividingNetworkR2": 2200
+            }
+          ]
+        },
+        {
+          "name": "VBusSensing",
+          "type": "VBusSensing",
+          "busVoltageDivider": 154,
+          "hwVariants": [
+            {
+              "type": "VBusSensing",
+              "help": "How to enable this variant",
+              "signals": {
+                "VBUS": [
+                  {
+                    "name": "ML30",
+                    "help": "",
+                    "cost": 0
+                  }
+                ]
+              },
+              "busVoltageDivider": 154,
+              "busVoltageDividerR1": 169,
+              "busVoltageDividerR2": 9.3,
+              "busVoltageDividerR3": null
+            }
+          ]
+        },
+        {
+          "name": "TemperatureSensing",
+          "type": "TemperatureSensing",
+          "hwVariants": [
+            {
+              "type": "NTCThermistor",
+              "help": "How to enable this variant",
+              "signals": {
+                "TEMPERATURE_NTC": [
+                  {
+                    "name": "ML30",
+                    "help": "",
+                    "cost": 0
+                  }
+                ]
+              },
+              "v0": 1055,
+              "t0": 25,
+              "gain": 22.7,
+              "maxSensorTemperature": 110
+            }
+          ]
+        },
+        {
+          "name": "OverCurrentProtection",
+          "type": "OverCurrentProtection",
+          "hwVariants": [
+            {
+              "type": "OnPowerStageOCP",
+              "help": "How to enable this variant",
+              "signals": {
+                "OC_TRIGGER": [
+                  {
+                    "name": "MR13",
+                    "help": "CN10.13. Factory default. Solder R78",
+                    "cost": 0
+                  },
+                  {
+                    "name": "MR14",
+                    "help": "CN10.14. Factory default. Solder R73",
+                    "cost": 0
+                  },
+                  {
+                    "name": "MR28",
+                    "help": "CN10.28. Factory default. Solder R74",
+                    "cost": 0
+                  }
+                ]
+              },
+              "OCComparatorThreshold": 0.3,
+              "OCNetworkOffset": 0,
+              "OCNetworkGain": 0.01,
+              "OCThreshold": 2,
+              "OCSignalPolarity": "Active low"
+            }
+          ]
+        },
+		{
+          "name": "CurrentLimiter",
+          "type": "CurrentLimiter",
+          "hwVariants": [
+            {
+              "type": "ExternalCurrentLimiter_PWM",
+              "help": "How to enable this variant",
+              "signals": {
+                "PWM_REF": [
+                  {
+                    "name": "MR27",
+                    "help": "CN10.27. Factory default. Solder R77",
+                    "cost": 0
+                  }
+                ],
+                "HF_ETR": [
+                  {
+                    "name": "MR12",
+                    "help": "CN10.12. Factory default. Solder R52",
+                    "cost": 0
+                  }
+                ]
+              },
+              "PWMDefaultFreq" : 60000, 
+              "PWMRefDivider"  : 1,
+              "ETRPolarity": "Active high"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
