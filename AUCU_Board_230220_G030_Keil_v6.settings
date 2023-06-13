@@ -1,0 +1,6 @@
+#
+#Mon Feb 20 18:02:00 CST 2023
+selected.firmware_ver=1.6.1
+selected.toolchain=Keil MDK-ARM V5
+selected.cubemx=6.7.0
+selected.driver=LL - Low Level
