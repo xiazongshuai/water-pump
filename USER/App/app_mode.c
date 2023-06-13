@@ -195,6 +195,9 @@ void mode_pwm_tick(void)
 //	  need_stop_flag = 0;
 //	}
 //	
+	
+	//pwm_speed_control(20);
+	
 	pwm_time++;
 	pwm_duty = get_duty_period();
 	temp_duty[temp_duty_time] = pwm_duty;
@@ -228,7 +231,7 @@ void mode_pwm_tick(void)
 		HAL_TIMEx_PWMN_Start(&htim16, TIM_CHANNEL_1);
 		//__HAL_TIM_SET_AUTORELOAD(&htim16,pwm_arr);
 	}
-} 
+}
 #endif
 
 

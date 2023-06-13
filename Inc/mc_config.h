@@ -37,7 +37,7 @@
 
 #include "ramp_ext_mngr.h"
 #include "circle_limitation.h"
-
+#include "flux_weakening_ctrl.h"
 #include "sto_speed_pos_fdbk.h"
 #include "sto_pll_speed_pos_fdbk.h"
 /* USER CODE BEGIN Additional include */
@@ -50,6 +50,9 @@ extern PID_Handle_t PIDSpeedHandle_M1;
 extern PID_Handle_t PIDIqHandle_M1;
 extern PID_Handle_t PIDIdHandle_M1;
 extern NTC_Handle_t TempSensor_M1;
+
+extern PID_Handle_t PIDFluxWeakeningHandle_M1;
+extern FW_Handle_t FW_M1;
 
 extern PWMC_R3_1_Handle_t PWM_Handle_M1;
 
@@ -70,6 +73,8 @@ extern PID_Handle_t *pPIDId[NBR_OF_MOTORS];
 extern NTC_Handle_t *pTemperatureSensor[NBR_OF_MOTORS];
 extern PQD_MotorPowMeas_Handle_t *pMPM[NBR_OF_MOTORS];
 extern MCI_Handle_t* pMCI[NBR_OF_MOTORS];
+//flux
+extern FW_Handle_t *pFW[NBR_OF_MOTORS];
 /* USER CODE BEGIN Additional extern */
 
 /* USER CODE END Additional extern */

@@ -122,6 +122,41 @@ PID_Handle_t PIDIdHandle_M1 =
   .hKdDivisorPOW2       = 0x0000U,
 };
 
+//flux
+/**
+  * @brief  FluxWeakeningCtrl component parameters Motor 1
+  */
+FW_Handle_t FW_M1 =
+{
+  .hMaxModule             = MAX_MODULE,
+  .hDefaultFW_V_Ref       = (int16_t)FW_VOLTAGE_REF,
+  .hDemagCurrent          = ID_DEMAG,
+  .wNominalSqCurr         = ((int32_t)NOMINAL_CURRENT*(int32_t)NOMINAL_CURRENT),
+  .hVqdLowPassFilterBW    = M1_VQD_SW_FILTER_BW_FACTOR,
+  .hVqdLowPassFilterBWLOG = M1_VQD_SW_FILTER_BW_FACTOR_LOG
+};
+
+/**
+  * @brief  PI Flux Weakening control parameters Motor 1
+  */
+PID_Handle_t PIDFluxWeakeningHandle_M1 =
+{
+  .hDefKpGain          = (int16_t)FW_KP_GAIN,
+  .hDefKiGain          = (int16_t)FW_KI_GAIN,
+  .wUpperIntegralLimit = 0,
+  .wLowerIntegralLimit = (int32_t)(-NOMINAL_CURRENT) * (int32_t)FW_KIDIV,
+  .hUpperOutputLimit       = 0,
+  .hLowerOutputLimit       = -INT16_MAX,
+  .hKpDivisor          = (uint16_t)FW_KPDIV,
+  .hKiDivisor          = (uint16_t)FW_KIDIV,
+  .hKpDivisorPOW2      = (uint16_t)FW_KPDIV_LOG,
+  .hKiDivisorPOW2      = (uint16_t)FW_KIDIV_LOG,
+  .hDefKdGain           = 0x0000U,
+  .hKdDivisor           = 0x0000U,
+  .hKdDivisorPOW2       = 0x0000U,
+};
+
+
 /**
   * @brief  SpeednTorque Controller parameters Motor 1
   */
@@ -359,6 +394,8 @@ NTC_Handle_t *pTemperatureSensor[NBR_OF_MOTORS] = {&TempSensor_M1};
 PID_Handle_t *pPIDIq[NBR_OF_MOTORS] = {&PIDIqHandle_M1};
 PID_Handle_t *pPIDId[NBR_OF_MOTORS] = {&PIDIdHandle_M1};
 PQD_MotorPowMeas_Handle_t *pMPM[NBR_OF_MOTORS] = {&PQD_MotorPowMeasM1};
+//flux
+FW_Handle_t *pFW[NBR_OF_MOTORS] = {&FW_M1};
 /* USER CODE BEGIN Additional configuration */
 /* USER CODE END Additional configuration */
 

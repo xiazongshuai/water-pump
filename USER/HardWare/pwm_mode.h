@@ -3,7 +3,7 @@
 
 #include "main.h"
 
-#define  pwm_max_speed  4000
+#define  pwm_max_speed  4500
 #define  pwm_min_speed  800
 
 extern TIM_HandleTypeDef  htim16;

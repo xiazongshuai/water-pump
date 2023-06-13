@@ -174,7 +174,16 @@ __weak void MCboot( MCI_Handle_t* pMCIList[NBR_OF_MOTORS] )
     /*   Temperature measurement component initialization  */
     /*******************************************************/
     NTC_Init(&TempSensor_M1);
-
+    
+		
+    /*******************************************************/
+    /*   Flux weakening component initialization           */
+    /*******************************************************/
+		#ifdef weak_flux
+    PID_HandleInit(&PIDFluxWeakeningHandle_M1);
+    FW_Init(pFW[M1],&PIDSpeedHandle_M1,&PIDFluxWeakeningHandle_M1);
+		#endif
+		
     pREMNG[M1] = &RampExtMngrHFParamsM1;
     REMNG_Init(pREMNG[M1]);
 
@@ -677,6 +686,16 @@ __weak void FOC_Clear(uint8_t bMotor)
 
   PWMC_SwitchOffPWM(pwmcHandle[bMotor]);
 
+	#ifdef weak_flux
+	if (NULL == pFW[bMotor])
+  {
+    /* Nothing to do */
+  }
+  else
+  {
+    FW_Clear(pFW[bMotor]);
+  }
+	#endif
   /* USER CODE BEGIN FOC_Clear 1 */
 
   /* USER CODE END FOC_Clear 1 */
@@ -714,7 +733,7 @@ __weak void FOC_InitAdditionalMethods(uint8_t bMotor) //cstat !RED-func-no-effec
   */
 __weak void FOC_CalcCurrRef(uint8_t bMotor)
 {
-
+   qd_t IqdTmp;
   /* USER CODE BEGIN FOC_CalcCurrRef 0 */
 
   /* USER CODE END FOC_CalcCurrRef 0 */
@@ -722,7 +741,19 @@ __weak void FOC_CalcCurrRef(uint8_t bMotor)
   {
     FOCVars[bMotor].hTeref = STC_CalcTorqueReference(pSTC[bMotor]);
     FOCVars[bMotor].Iqdref.q = FOCVars[bMotor].hTeref;
-
+    
+		#ifdef weak_flux
+    if (NULL == pFW[bMotor])
+    {
+      /* Nothing to do */
+    }
+    else
+    {
+      IqdTmp.q = FOCVars[bMotor].Iqdref.q;
+      IqdTmp.d = FOCVars[bMotor].UserIdref;
+      FOCVars[bMotor].Iqdref = FW_CalcCurrRef(pFW[bMotor], IqdTmp);
+    }
+		#endif
   }
   else
   {
@@ -923,6 +954,10 @@ inline uint16_t FOC_CurrControllerM1(void)
   FOCVars[M1].Iqd = Iqd;
   FOCVars[M1].Valphabeta = Valphabeta;
   FOCVars[M1].hElAngle = hElAngle;
+	
+	#ifdef weak_flux
+	FW_DataProcess(pFW[M1], Vqd);
+	#endif
 #if 1
 
 		watch_data.w_Vqd.Vq = Vqd.q;

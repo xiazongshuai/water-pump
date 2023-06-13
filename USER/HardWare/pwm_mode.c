@@ -1,5 +1,6 @@
 #include "pwm_mode.h"
 #include "app_mode.h"
+#include "stdlib.h" 
 
 TIM_HandleTypeDef  htim16;
 
@@ -136,7 +137,13 @@ static uint8_t temp = 0;
 uint8_t start_or_stop =0;
 void pwm_speed_control(uint8_t duty_data)
 {
-	
+	 int16_t current_speed_ref;
+	 int32_t SpeedCMD_M1;
+  int16_t speed_acc = 400;
+  int32_t duration_time;
+	current_speed_ref = MC_GetMecSpeedReferenceMotor1();
+//	SpeedCMD_M1 = //(int16_t)((float)watch_data.w_hTargetSpeed_rpm);
+//	 duration_time = (int32_t)abs(SpeedCMD_M1 - current_speed_ref) * 1000 / speed_acc;
 	if(temp == duty_data)
 	{
 	  return;
@@ -145,26 +152,33 @@ void pwm_speed_control(uint8_t duty_data)
 	{
 		temp = duty_data;
 	}
-  set_pwm_output();
+   set_pwm_output();
    if(duty_data <= 5)
 	{
 	  //最大速度
 		start_or_stop = 1;
-		MC_ProgramSpeedRampMotor1(pwm_max_speed/6,10000);
+		SpeedCMD_M1 = pwm_max_speed/6;
+	  duration_time = (int32_t)abs(SpeedCMD_M1 - current_speed_ref) * 1000 / speed_acc;
+		MC_ProgramSpeedRampMotor1(SpeedCMD_M1,duration_time);
+		//MC_ProgramSpeedRampMotor1(pwm_max_speed/6,10000);
 	  MC_StartMotor1();
 	}
 	else if(duty_data > 5 && duty_data <= 85)
 	{
 	  //根据占空比调速
 		start_or_stop = 1;
-		MC_ProgramSpeedRampMotor1( (pwm_max_speed - ((pwm_max_speed-pwm_min_speed)*duty_data/80)) /6  ,10000);
+		SpeedCMD_M1 = (pwm_max_speed - ((pwm_max_speed-pwm_min_speed)*duty_data/80))/6;  //4300/6;//3585/6;//
+	  duration_time = (int32_t)abs(SpeedCMD_M1 - current_speed_ref) * 1000 / speed_acc;
+		MC_ProgramSpeedRampMotor1( SpeedCMD_M1  ,duration_time);
 	  MC_StartMotor1();
 	}
 	else if(duty_data > 85 && duty_data <= 91)
 	{
 	  //最小速度
 		start_or_stop = 1;
-		MC_ProgramSpeedRampMotor1(pwm_min_speed/6,10000);
+		SpeedCMD_M1 = pwm_min_speed/6;
+	  duration_time = (int32_t)abs(SpeedCMD_M1 - current_speed_ref) * 1000 / speed_acc;
+		MC_ProgramSpeedRampMotor1(SpeedCMD_M1,duration_time);
 	  MC_StartMotor1();
 	}
 	else if(duty_data > 91 && duty_data <= 95)
@@ -172,7 +186,9 @@ void pwm_speed_control(uint8_t duty_data)
 	  //迟滞区：启动、停止
 		if(start_or_stop == 1)
 		{
-		 MC_ProgramSpeedRampMotor1(pwm_min_speed/6,10000);
+		 SpeedCMD_M1 = pwm_min_speed/6;
+	   duration_time = (int32_t)abs(SpeedCMD_M1 - current_speed_ref) * 1000 / speed_acc;
+		 MC_ProgramSpeedRampMotor1(SpeedCMD_M1,duration_time);
 	   MC_StartMotor1();
 		}
 		

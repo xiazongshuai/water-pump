@@ -33,7 +33,7 @@ volatile int16_t UARTSpeedCMD_M1 ;	//#SPEED_UNIT, U_01HZ
 volatile int16_t UARTSpeedCMDLast_M1 ;
 //volatile int16_t PowerCMD_M1=0; //added by zn 20191225
 
-volatile int16_t Acc_M1 = 10;		//#SPEED_UNIT, U_01HZ//add or decrease 60rpm/s
+volatile int16_t Acc_M1 = 400;		//#SPEED_UNIT, U_01HZ//add or decrease 60rpm/s
 uint8_t M1EnableStartFlag = false;
 
 void UART_Emulator_Debug(void)

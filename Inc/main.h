@@ -124,6 +124,7 @@ extern 	uint16_t mccurrent_err;
 extern TIM_HandleTypeDef htim17;
 void MX_USART1_UART_Init(void);
 void MX_TIM17_Init(void);
+uint32_t millis(void);
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

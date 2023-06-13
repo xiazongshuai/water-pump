@@ -3,8 +3,8 @@
 
 #include "main.h"
 
-//#define voltage_0_10   
-#define LIN_CONTROL
+#define voltage_0_10   
+//#define LIN_CONTROL
 //#define PWM_CONTROL
 
 extern uint8_t mrx_data;

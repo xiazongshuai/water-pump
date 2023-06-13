@@ -31,6 +31,7 @@
 static RevUpCtrl_Handle_t *RevUpControl[NBR_OF_MOTORS] = { &RevUpControlM1 };
 static STO_PLL_Handle_t * stoPLLSensor [NBR_OF_MOTORS] = { &STO_PLL_M1 };
 static PID_Handle_t *pPIDSpeed[NBR_OF_MOTORS] = { &PIDSpeedHandle_M1 };
+static PID_Handle_t *pPIDFW[NBR_OF_MOTORS] = { &PIDFluxWeakeningHandle_M1};
 
 static uint8_t RI_SetReg (uint16_t dataID, uint8_t * data, uint16_t *size, int16_t dataAvailable);
 static uint8_t RI_GetReg (uint16_t dataID, uint8_t * data, uint16_t *size, int16_t maxSize);
@@ -279,7 +280,26 @@ uint8_t RI_SetReg (uint16_t dataID, uint8_t * data, uint16_t *size, int16_t data
             PID_SetKD(pPIDId[motorID], (int16_t)regdata16);
             break;
           }
+       #ifdef weak_flux
+          case MC_REG_FLUXWK_KP:
+          {
+            PID_SetKP(pPIDFW[motorID], (int16_t)regdata16);
+            break;
+          }
 
+          case MC_REG_FLUXWK_KI:
+          {
+            PID_SetKI(pPIDFW[motorID], (int16_t)regdata16);
+            break;
+          }
+
+					case MC_REG_FLUXWK_BUS:
+          {
+            FW_SetVref(pFW[motorID], regdata16);
+            break;
+          }
+			  #endif	
+					
           case MC_REG_BUS_VOLTAGE:
           case MC_REG_HEATS_TEMP:
           case MC_REG_MOTOR_POWER:
@@ -428,7 +448,19 @@ uint8_t RI_SetReg (uint16_t dataID, uint8_t * data, uint16_t *size, int16_t data
             PID_SetKPDivisorPOW2 (&stoPLLSensor[motorID]->PIRegulator,regdata16);
             break;
           }
+           #ifdef weak_flux
+            case MC_REG_FLUXWK_KP_DIV:
+          {
+            PID_SetKPDivisorPOW2 (pPIDFW[motorID],regdata16);
+            break;
+          }
 
+          case MC_REG_FLUXWK_KI_DIV:
+          {
+            PID_SetKIDivisorPOW2 (pPIDFW[motorID],regdata16);
+            break;
+          }
+           #endif
           default:
           {
             retVal = MCP_ERROR_UNKNOWN_REG;
@@ -726,6 +758,31 @@ uint8_t RI_GetReg (uint16_t dataID, uint8_t * data, uint16_t *size, int16_t free
               *regdata16 = PID_GetKD(pPIDId[motorID]);
               break;
             }
+					#ifdef weak_flux
+                   case MC_REG_FLUXWK_KP:
+            {
+              *regdata16 = PID_GetKP(pPIDFW[motorID]);
+              break;
+            }
+
+            case MC_REG_FLUXWK_KI:
+            {
+              *regdata16 = PID_GetKI(pPIDFW[motorID]);
+              break;
+            }
+ 
+					case MC_REG_FLUXWK_BUS:
+          {
+           *regdataU16 = FW_GetVref(pFW[motorID]);
+              break;
+          }
+						case MC_REG_FLUXWK_BUS_MEAS:
+            {
+              *regdata16 = (int16_t)FW_GetAvVPercentage(pFW[motorID]);
+              break;
+            }
+			    #endif	
+					
             case MC_REG_BUS_VOLTAGE:
             {
               *regdataU16 = VBS_GetAvBusVoltage_V(BusVoltageSensor[motorID]);
@@ -942,6 +999,19 @@ uint8_t RI_GetReg (uint16_t dataID, uint8_t * data, uint16_t *size, int16_t free
               *regdataU16 = PID_GetKPDivisorPOW2(&stoPLLSensor[motorID]->PIRegulator);
               break;
             }
+			#ifdef weak_flux
+            case MC_REG_FLUXWK_KP_DIV:
+            {
+              *regdataU16 = PID_GetKPDivisorPOW2(pPIDFW[motorID]);
+              break;
+            }
+
+            case MC_REG_FLUXWK_KI_DIV:
+            {
+              *regdataU16 = PID_GetKIDivisorPOW2(pPIDFW[motorID]);
+              break;
+            }
+			#endif
             default:
             {
               retVal = MCP_ERROR_UNKNOWN_REG;

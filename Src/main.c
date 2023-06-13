@@ -42,6 +42,7 @@ uint16_t mccurrent_err;
 	
 int time_1ms = 0;
 int time_1000ms = 0;
+uint32_t time_30s = 0;
 int time_ms = 0;
 
 MCI_State_t msta;
@@ -166,11 +167,19 @@ int main(void)
 	
   time_1ms = millis();
 	time_1000ms = millis();
+	time_30s = millis();
   /* Infinite loop */
   watch_data.w_max_current_multi_1000 = (int16_t)(MAX_CURRENT*1000);//5
+
+  mode_pwm_init();
+	
+	
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	 #if 1
+
+		
 	 if(millis() - time_1000ms > 1000)
 	  {
   	 time_1000ms = millis();
@@ -189,9 +198,12 @@ int main(void)
 		 #ifdef LIN_CONTROL
 		 Lin_DataProcess();
 		 #endif
-		 work_mode_perfrom();
+		 //work_mode_perfrom();
+		 mode_pwm_tick();
 		 error_check();
 	 }
+	 #endif
+	 
 }
 }
 /**

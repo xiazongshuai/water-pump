@@ -118,6 +118,8 @@ typedef struct
 #define MCP_OVER_UARTA   (1U<< 1U)
 #define MCP_OVER_UARTB   0U
 
+//??
+//#define configurationFlag1_M1 (FLUX_WEAKENING_FLAG|VBUS_SENSING_FLAG)
 #define configurationFlag1_M1 (VBUS_SENSING_FLAG)
 #define configurationFlag2_M1 (0U)
 

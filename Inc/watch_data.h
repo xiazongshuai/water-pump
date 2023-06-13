@@ -77,6 +77,8 @@ typedef struct
   uint8_t   ctrl_mode; 
 	int16_t			w_max_current_multi_1000;
 	uint16_t		w_hPWMFrequency;		//Hz
+	
+	uint8_t			w_flag_circle_limit;
 } S_WATCH_DATA;
 
 

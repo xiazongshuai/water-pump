@@ -28,6 +28,7 @@
  *** Motor Parameters ***
  ************************/
 #include "pmsm_motor_parameters.h"
+#include "main.h"
 /******** MAIN AND AUXILIARY SPEED/POSITION SENSOR(S) SETTINGS SECTION ********/
 
 /***** user defined motort parameters*****/
@@ -39,13 +40,14 @@
 #define  USER_RSHUNT            0.1   //180W¸ÄÎª100ºÁÅ·--19859--0.1      10ºÁÅ·--1985--0.01
 #define  USER_AMPLIFICATION_GAIN   10
 
-#define  USER_RS         		  32
-#define  USER_LS         		  0.138
-#define  USER_LD          		0.138
+#define  USER_RS         		 16.5 //32
+#define  USER_LS         		 0.07 //0.138
+#define  USER_LD          	 0.07 //0.138
 #define  USER_KE          		42.39
 #define  USER_POLE_PAIR_NUM   2
 
 
+//#define weak_flux
 
 /*** Speed measurement settings ***/
 #define MAX_APPLICATION_SPEED_RPM       MOTOR_MAX_SPEED_RPM	//3600//3200 /*!< rpm, mechanical */
@@ -71,10 +73,10 @@
 
 /* State observer constants */
 #define GAIN1                          -5257
-#define GAIN2                          9678//24185
+#define GAIN2                          4839 //9678//24185
 /*Only in case PLL is used, PLL gains */
-#define PLL_KP_GAIN                     213//299// 213//426
-#define PLL_KI_GAIN                     9//13// 9//19
+#define PLL_KP_GAIN                  299   //213
+#define PLL_KI_GAIN                  13   //9
 #define PLL_KPDIV     16384
 #define PLL_KPDIV_LOG LOG2((PLL_KPDIV))
 #define PLL_KIDIV     65535
@@ -115,20 +117,20 @@
 
 
 /* Gains values for torque and flux control loops */
-#define PID_TORQUE_KP_DEFAULT         2954/20 //2238/20
-#define PID_TORQUE_KI_DEFAULT         2740/20 //2076/20
+#define PID_TORQUE_KP_DEFAULT        2997/20  //2954/20 
+#define PID_TORQUE_KI_DEFAULT        2826/20  //2740/20 
 #define PID_TORQUE_KD_DEFAULT         100
-#define PID_FLUX_KP_DEFAULT           2954/20 //2238/20
-#define PID_FLUX_KI_DEFAULT           2740/20 //2076/20
-#define PID_FLUX_KD_DEFAULT           100
+#define PID_FLUX_KP_DEFAULT           PID_TORQUE_KP_DEFAULT//2954/20
+#define PID_FLUX_KI_DEFAULT           PID_TORQUE_KI_DEFAULT//2740/20 
+#define PID_FLUX_KD_DEFAULT           PID_TORQUE_KD_DEFAULT//100
 
 
 /* Torque/Flux control loop gains dividers*/
-#define TF_KPDIV                      16 //4
-#define TF_KIDIV                      1024 //256
+#define TF_KPDIV                     32   //16 
+#define TF_KIDIV                     2048 //1024 
 #define TF_KDDIV                      8192
-#define TF_KPDIV_LOG                  LOG2((TF_KPDIV)) //LOG2((4))
-#define TF_KIDIV_LOG                  LOG2((TF_KIDIV)) //LOG2((256))
+#define TF_KPDIV_LOG                LOG2((32))     //LOG2((16)) 
+#define TF_KIDIV_LOG                LOG2((2048))   //LOG2((1024)) 
 #define TF_KDDIV_LOG                  LOG2((8192))
 #define TFDIFFERENTIAL_TERM_ENABLING  DISABLE
 
@@ -138,18 +140,29 @@
 /* Speed control loop */
 #define SPEED_LOOP_FREQUENCY_HZ       ( uint16_t )1000 /*!<Execution rate of speed
                                                      regulation loop (Hz) */
-
-#define PID_SPEED_KP_DEFAULT         2898/(SPEED_UNIT/10)  /* Workbench compute the gain for 01Hz unit*/
+#if 0
+#define PID_SPEED_KP_DEFAULT         2898//12000//2898/(SPEED_UNIT/10)  /* Workbench compute the gain for 01Hz unit*/
 #define PID_SPEED_KI_DEFAULT         37/(SPEED_UNIT/10) /* Workbench compute the gain for 01Hz unit*/
 #define PID_SPEED_KD_DEFAULT          0/(SPEED_UNIT/10) /* Workbench compute the gain for 01Hz unit*/
 /* Speed PID parameter dividers */
-#define SP_KPDIV                      4096 //16384
-#define SP_KIDIV                      16384
+#define SP_KPDIV                      4096//1024	//512//4096 //16384
+#define SP_KIDIV                      16384//4096//2048//1024	//256//16384
 #define SP_KDDIV                      16
-#define SP_KPDIV_LOG                  LOG2((4096)) //LOG2((16384))
-#define SP_KIDIV_LOG                  LOG2((16384))
+#define SP_KPDIV_LOG                  LOG2((SP_KPDIV)) //LOG2((16384))
+#define SP_KIDIV_LOG                  LOG2((SP_KIDIV))
 #define SP_KDDIV_LOG                  LOG2((16))
+#endif
 
+#define PID_SPEED_KP_DEFAULT         96000//12000//2898/(SPEED_UNIT/10)  /* Workbench compute the gain for 01Hz unit*/
+#define PID_SPEED_KI_DEFAULT         296//37/(SPEED_UNIT/10) /* Workbench compute the gain for 01Hz unit*/
+#define PID_SPEED_KD_DEFAULT          0/(SPEED_UNIT/10) /* Workbench compute the gain for 01Hz unit*/
+/* Speed PID parameter dividers */
+#define SP_KPDIV                      4096//512//4096//1024	//512//4096 //16384
+#define SP_KIDIV                      16384//2048//16384//2048 //4096//2048//1024	//256//16384
+#define SP_KDDIV                      16
+#define SP_KPDIV_LOG                  LOG2((SP_KPDIV)) //LOG2((16384))
+#define SP_KIDIV_LOG                  LOG2((SP_KIDIV))
+#define SP_KDDIV_LOG                  LOG2((16))
 
 
 /* USER CODE BEGIN PID_SPEED_INTEGRAL_INIT_DIV */
@@ -245,6 +258,25 @@
 #define ADC_SAMPLING_CYCLES (7 + SAMPLING_CYCLE_CORRECTION)
 
 /******************************   ADDITIONAL FEATURES   **********************/
+//flux
+#define FW_VOLTAGE_REF                985 /*!<Vs reference, tenth
+                                                        of a percent */
+#define FW_KP_GAIN                    1  // 3000/20 /*!< Default Kp gain */
+#define FW_KI_GAIN                    65 // 5000/20 /*!< Default Ki gain */
+#define FW_KPDIV                      32768
+                                                /*!< Kp gain divisor.If FULL_MISRA_C_COMPLIANCY
+                                                is not defined the divisor is implemented through
+                                                algebrical right shifts to speed up PIs execution.
+                                                Only in this case this parameter specifies the
+                                                number of right shifts to be executed */
+#define FW_KIDIV                      32768
+                                                /*!< Ki gain divisor.If FULL_MISRA_C_COMPLIANCY
+                                                is not defined the divisor is implemented through
+                                                algebrical right shifts to speed up PIs execution.
+                                                Only in this case this parameter specifies the
+                                                number of right shifts to be executed */
+#define FW_KPDIV_LOG                  LOG2((32768))
+#define FW_KIDIV_LOG                  LOG2((32768))
 
 /*** On the fly start-up ***/
 
