@@ -33,10 +33,10 @@
 //#define LS                     0.00261641771//0.03326 /* Stator inductance, H
 //                                              //   For I-PMSM it is equal to Lq */
 
-//¸Ä
-#define POLE_PAIR_NUM          2/* Number of motor pole pairs */
-#define RS                     0.697//0.315 /* Stator resistance , ohm*/
-#define LS                     0.00306 /* Stator inductance, H
+//ï¿½ï¿½
+#define POLE_PAIR_NUM          USER_POLE_PAIR_NUM/* Number of motor pole pairs */
+#define RS                     USER_RS//0.315 /* Stator resistance , ohm*/
+#define LS                     USER_LS /* Stator inductance, H
                                               //   For I-PMSM it is equal to Lq */
 /* When using Id = 0, NOMINAL_CURRENT is utilized to saturate the output of the
    PID for speed regulation (i.e. reference torque).
@@ -46,16 +46,12 @@
                                    *Amplifying network gain)/(MCU supply voltage/2)
 */
 
-//#define NOMINAL_CURRENT         13900//2978*3 //29785
-//#define MOTOR_MAX_SPEED_RPM     6000//3600//3200 /*!< Maximum rated speed  */
-//#define MOTOR_VOLTAGE_CONSTANT  28//48.63//8.105//53.8 /*!< Volts RMS ph-ph /kRPM */
-//#define ID_DEMAG                -13900//-2978*3//-29785 /*!< Demagnetization current */
 
-//¸Ä
-#define NOMINAL_CURRENT         1985*1.6
-#define MOTOR_MAX_SPEED_RPM     4500 /*!< Maximum rated speed  */
-#define MOTOR_VOLTAGE_CONSTANT  111//6.12//8.105//53.8 /*!< Volts RMS ph-ph /kRPM */
-#define ID_DEMAG                -1985*1.6 /*!< Demagnetization current */
+//ï¿½ï¿½
+#define NOMINAL_CURRENT         USER_NOMINAL_CURRENT//1985*1.6
+#define MOTOR_MAX_SPEED_RPM     USER_MAX_SPEED//4500 /*!< Maximum rated speed  */
+#define MOTOR_VOLTAGE_CONSTANT  USER_KE//6.12//8.105//53.8 /*!< Volts RMS ph-ph /kRPM */
+#define ID_DEMAG                USER_ID_DEMAG//-1985*1.6 /*!< Demagnetization current */
 
 /***************** MOTOR SENSORS PARAMETERS  ******************************/
 /* Motor sensors parameters are always generated but really meaningful only

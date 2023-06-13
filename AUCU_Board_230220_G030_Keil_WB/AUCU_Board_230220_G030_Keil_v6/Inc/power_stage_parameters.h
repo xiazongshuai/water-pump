@@ -42,11 +42,11 @@
 /*** Topology ***/
 #define THREE_SHUNT
 
-#define RSHUNT                        0.01//0.3
+#define RSHUNT                        USER_RSHUNT//0.3
 
 /*  ICSs gains in case of isolated current sensors,
         amplification gain for shunts based sensing */
-#define AMPLIFICATION_GAIN            10//1.1
+#define AMPLIFICATION_GAIN            USER_AMPLIFICATION_GAIN//1.1
 
 /*** Noise parameters ***/
 #define TNOISE_NS                     1000

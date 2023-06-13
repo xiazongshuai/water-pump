@@ -53,26 +53,14 @@ static const ApplicationConfig_reg_t M1_ApplicationConfig_reg =
   .driveType = DRIVE_TYPE_M1,
 };
 
-//const MotorConfig_reg_t M1_MotorConfig_reg =
-//{
-//  .polePairs = 3,//6,//4,
-//  .ratedFlux = MOTOR_VOLTAGE_CONSTANT,//8.105,//53.8,
-//  .rs = 0.561,//6.52/2,
-//  .ls = 0.00261641771*1.000,//0.03326*1.000,
-//  .ld = 0.00261641771,//0.03326,
-//  .maxCurrent = IQMAX, //13900*3/2,//2978*3,//29785,
-//  .name = "AOKU_v2"
-//};
-
-//¸Ä
 const MotorConfig_reg_t M1_MotorConfig_reg =
 {
-  .polePairs = 2,
-  .ratedFlux = MOTOR_VOLTAGE_CONSTANT,//8.105,//53.8,
-  .rs = 0.679,//0.315,
-  .ls = 0.00306,//0.00261641771*1.000,
-  .ld = 0.00306,//0.00261641771,
-  .maxCurrent = IQMAX, //13900*3/2,//2978*3,//29785,
+  .polePairs = USER_POLE_PAIR_NUM,//2,
+  .ratedFlux = MOTOR_VOLTAGE_CONSTANT,
+  .rs = USER_RS,//32,
+  .ls = USER_LS,//0.138,
+  .ld = USER_LD,//0.138,
+  .maxCurrent = IQMAX, 
   .name = "AOKU_v2"
 };
 

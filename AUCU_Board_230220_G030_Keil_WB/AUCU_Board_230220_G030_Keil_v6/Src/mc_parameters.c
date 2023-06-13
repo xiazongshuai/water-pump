@@ -55,11 +55,11 @@ const R3_1_Params_t R3_1_Params =
 /* PWM Driving signals initialization ----------------------------------------*/
   .LowSideOutputs= (LowSideOutputsFunction_t)LOW_SIDE_SIGNALS_ENABLING,
 
-//180WºÍ550W°å×ÓµÄU¡¢WÁ½Ïà²ÉÑùÏà·´
+//180Wï¿½ï¿½550Wï¿½ï¿½ï¿½Óµï¿½Uï¿½ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à·´
 	
-//550W°å×Ó
+//550Wï¿½ï¿½ï¿½ï¿½
 #if 0
-	//ADC channel selection register  Í¨µÀ0 4 5¶ÔÓ¦U V W
+	//ADC channel selection register  Í¨ï¿½ï¿½0 4 5ï¿½ï¿½Ó¦U V W
   .ADCConfig = {
                 ( uint32_t )( 1<< 4 ) | ( uint32_t )( 1<< 0 ), //4  0
                 ( uint32_t )( 1<< 5 ) | ( uint32_t )( 1<< 0 ), //5  0
@@ -68,7 +68,7 @@ const R3_1_Params_t R3_1_Params =
                 ( uint32_t )( 1<< 5 ) | ( uint32_t )( 1<< 4 ), //5  4
                 ( uint32_t )( 1<< 4 ) | ( uint32_t )( 1<< 0 ), //4  0
   },
-  .ADCScandir = {  //É¨Ãè·½Ïò FORWARD:Ð¡-->´ó                 ÏÈ  ºó
+  .ADCScandir = {  //É¨ï¿½è·½ï¿½ï¿½ FORWARD:Ð¡-->ï¿½ï¿½                 ï¿½ï¿½  ï¿½ï¿½
    LL_ADC_REG_SEQ_SCAN_DIR_BACKWARD>>ADC_CFGR1_SCANDIR_Pos,  //4  0
    LL_ADC_REG_SEQ_SCAN_DIR_BACKWARD>>ADC_CFGR1_SCANDIR_Pos, //5  0
    LL_ADC_REG_SEQ_SCAN_DIR_FORWARD>>ADC_CFGR1_SCANDIR_Pos, //0  5
@@ -76,7 +76,7 @@ const R3_1_Params_t R3_1_Params =
    LL_ADC_REG_SEQ_SCAN_DIR_BACKWARD>>ADC_CFGR1_SCANDIR_Pos, //5  4
    LL_ADC_REG_SEQ_SCAN_DIR_FORWARD>>ADC_CFGR1_SCANDIR_Pos, //0  4
   },
-  .ADCDataReg1 = {  //Í¨µÀ1
+  .ADCDataReg1 = {  //Í¨ï¿½ï¿½1
                &PWM_Handle_M1.ADC1_DMA_converted[0], //4
                &PWM_Handle_M1.ADC1_DMA_converted[0], //5
                &PWM_Handle_M1.ADC1_DMA_converted[1], //5
@@ -85,7 +85,7 @@ const R3_1_Params_t R3_1_Params =
                &PWM_Handle_M1.ADC1_DMA_converted[1], //4
   },
 
-  .ADCDataReg2 = {   //Í¨µÀ2
+  .ADCDataReg2 = {   //Í¨ï¿½ï¿½2
                &PWM_Handle_M1.ADC1_DMA_converted[1], //0
                &PWM_Handle_M1.ADC1_DMA_converted[1], //0
                &PWM_Handle_M1.ADC1_DMA_converted[0], //0
@@ -95,11 +95,11 @@ const R3_1_Params_t R3_1_Params =
   },
 #endif 
 	
-	//ADC channel selection register  Í¨µÀ0 4 5¶ÔÓ¦U V W
+	//ADC channel selection register  Í¨ï¿½ï¿½0 4 5ï¿½ï¿½Ó¦U V W
 //	U  V  W     U  V  W
 //	0  4  5     5  4  0
 
-//180WÐÂ°å×Ó
+//180Wï¿½Â°ï¿½ï¿½ï¿½
 #if 1
   .ADCConfig = {
                 ( uint32_t )( 1<< 4 ) | ( uint32_t )( 1<< 5 ), //4  0      4  5
@@ -109,7 +109,7 @@ const R3_1_Params_t R3_1_Params =
                 ( uint32_t )( 1<< 0 ) | ( uint32_t )( 1<< 4 ), //5  4      0  4
                 ( uint32_t )( 1<< 4 ) | ( uint32_t )( 1<< 5 ), //4  0      4  5
   },
-  .ADCScandir = {  //É¨Ãè·½Ïò FORWARD:Ð¡-->´ó                 ÏÈ  ºó
+  .ADCScandir = {  //É¨ï¿½è·½ï¿½ï¿½ FORWARD:Ð¡-->ï¿½ï¿½                 ï¿½ï¿½  ï¿½ï¿½
    LL_ADC_REG_SEQ_SCAN_DIR_FORWARD>>ADC_CFGR1_SCANDIR_Pos,  //4  0      4  5
    LL_ADC_REG_SEQ_SCAN_DIR_FORWARD>>ADC_CFGR1_SCANDIR_Pos, //5  0      0  5
    LL_ADC_REG_SEQ_SCAN_DIR_BACKWARD>>ADC_CFGR1_SCANDIR_Pos, //0  5       5  0
@@ -117,7 +117,7 @@ const R3_1_Params_t R3_1_Params =
    LL_ADC_REG_SEQ_SCAN_DIR_FORWARD>>ADC_CFGR1_SCANDIR_Pos, //5  4      0  4
    LL_ADC_REG_SEQ_SCAN_DIR_BACKWARD>>ADC_CFGR1_SCANDIR_Pos, //0  4       5  4
   },
-  .ADCDataReg1 = {  //Í¨µÀ1
+  .ADCDataReg1 = {  //Í¨ï¿½ï¿½1
                &PWM_Handle_M1.ADC1_DMA_converted[0], //4
                &PWM_Handle_M1.ADC1_DMA_converted[0], //5
                &PWM_Handle_M1.ADC1_DMA_converted[1], //5
@@ -126,7 +126,7 @@ const R3_1_Params_t R3_1_Params =
                &PWM_Handle_M1.ADC1_DMA_converted[1], //4
   },
 
-  .ADCDataReg2 = {   //Í¨µÀ2
+  .ADCDataReg2 = {   //Í¨ï¿½ï¿½2
                &PWM_Handle_M1.ADC1_DMA_converted[1], //0
                &PWM_Handle_M1.ADC1_DMA_converted[1], //0
                &PWM_Handle_M1.ADC1_DMA_converted[0], //0

@@ -30,6 +30,22 @@
 #include "pmsm_motor_parameters.h"
 /******** MAIN AND AUXILIARY SPEED/POSITION SENSOR(S) SETTINGS SECTION ********/
 
+/***** user defined motort parameters*****/
+#define  USER_CURRENT_1A        1985//19859  
+#define  USER_IQMAX             (USER_CURRENT_1A*1.6*3/2)
+#define  USER_NOMINAL_CURRENT   (USER_CURRENT_1A*1.6)
+#define  USER_ID_DEMAG          (-USER_CURRENT_1A*1.6)
+#define  USER_MAX_SPEED         4500
+#define  USER_RSHUNT            0.01   //180W改为100毫欧--19859--0.1      10毫欧--1985--0.01
+#define  USER_AMPLIFICATION_GAIN   10
+
+#define  USER_RS         		  0.679
+#define  USER_LS         		  0.00306
+#define  USER_LD          		0.00306
+#define  USER_KE          		42.39
+#define  USER_POLE_PAIR_NUM   2
+
+
 //#define weak_flux
 
 /*** Speed measurement settings ***/
@@ -141,7 +157,7 @@
 /* USER CODE END PID_SPEED_INTEGRAL_INIT_DIV */
 
 #define SPD_DIFFERENTIAL_TERM_ENABLING DISABLE
-#define IQMAX                          NOMINAL_CURRENT*3/2 //13900*3/2//2978*6//29785, 13106
+#define IQMAX                         USER_IQMAX// NOMINAL_CURRENT*3/2 //13900*3/2//2978*6//29785, 13106
 
 /* Default settings */
 //#define DEFAULT_CONTROL_MODE           MCM_TORQUE_MODE  //转矩
