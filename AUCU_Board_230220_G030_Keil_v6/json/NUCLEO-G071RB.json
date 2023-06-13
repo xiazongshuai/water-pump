@@ -1,0 +1,665 @@
+{
+  "type": "control",
+  "name": "NUCLEO-G071RB",
+  "descVersion": 3,
+  "PN": "NUCLEO-G071RB",
+  "longDescription": "STM32 Nucleo-64 development board with STM32G071RB MCU, supports Arduino and ST morpho connectivity",
+  "shortDescription": "Nucleo 64 board with STM32G071 MCU",
+  "link": "https://www.st.com/en/evaluation-tools/nucleo-g071rb.html",
+
+  "mcu": "STM32G071RBTx",
+  "clockSource": "internal_osc",
+  "clockFrequency": 64,
+
+  "connectors": [
+    {
+      "name": "Morpho CN7/CN10",
+      "type": "morpho",
+      "terminals": {
+        "ML1": [
+          {
+            "name": "PC10",
+            "help": "CN7.1",
+            "cost": 0
+          }
+        ],
+        "ML2": [
+          {
+            "name": "PC11",
+            "help": "CN7.2",
+            "cost": 0
+          }
+        ],
+        "ML3": [
+          {
+            "name": "PC12",
+            "help": "CN7.3",
+            "cost": 0
+          }
+        ],
+        "ML4": [
+          {
+            "name": "PD2",
+            "help": "CN7.4",
+            "cost": 0
+          }
+        ],
+        "ML5": [
+          {
+            "name": "VDD",
+            "help": "CN7.5",
+            "cost": 0
+          }
+        ],
+        "ML6": [
+          {
+            "name": "E5V",
+            "help": "CN7.6",
+            "cost": 0
+          }
+        ],
+        "ML7": [
+          {
+            "name": "PA14",
+            "help": "CN7.7",
+            "cost": 0
+          }
+        ],
+        "ML8": [
+          {
+            "name": "GND",
+            "help": "CN7.8",
+            "cost": 0
+          }
+        ],
+        "ML9": [
+          {
+            "name": "PD0",
+            "help": "CN7.9",
+            "cost": 0
+          }
+        ],
+        "ML10": [
+          {
+            "name": "PD1",
+            "help": "CN7.10",
+            "cost": 0
+          }
+        ],
+        "ML11": [
+          {
+            "name": "PD3",
+            "help": "CN7.11",
+            "cost": 0
+          }
+        ],
+        "ML12": [
+          {
+            "name": "3V3",
+            "help": "CN7.12",
+            "cost": 0
+          }
+        ],
+        "ML13": [
+          {
+            "name": "PA13",
+            "help": "CN7.13 PA13 and PA14 are shared with SWD signals connected to STLINK-V3E. It is not recommended to use them as I/O pins.",
+            "cost": 0
+          }	  
+        ],
+        "ML14": [
+          {
+            "name": "NRST",
+            "help": "CN7.14",
+            "cost": 0
+          }
+        ],
+        "ML15": [
+          {
+            "name": "PD4",
+            "help": "CN7.15 PA13 and PA14 are shared with SWD signals connected to STLINK-V3E. It is not recommended to use them as I/O pins.",
+            "cost": 0
+          }
+        ],
+        "ML16": [
+          {
+            "name": "3V3",
+            "help": "CN7.16",
+            "cost": 0
+          }
+        ],
+        "ML17": [
+          {
+            "name": "PA15",
+            "help": "CN7.17",
+            "cost": 0
+          }
+        ],
+        "ML18": [
+          {
+            "name": "5V",
+            "help": "CN7.18",
+            "cost": 0
+          }
+        ],
+        "ML19": [
+          {
+            "name": "GND",
+            "help": "CN7.19",
+            "cost": 0
+          }
+        ],
+        "ML20": [
+          {
+            "name": "GND",
+            "help": "CN7.20",
+            "cost": 0
+          }
+        ],
+        "ML21": [
+          {
+            "name": "PB7",
+            "help": "CN7.21",
+            "cost": 0
+          }
+        ],
+        "ML22": [
+          {
+            "name": "GND",
+            "help": "CN7.22",
+            "cost": 0
+          }
+        ],
+        "ML23": [
+          {
+            "name": "PC13",
+            "help": "CN7.23",
+            "cost": 0
+          }
+        ],
+        "ML24": [
+          {
+            "name": "VIN",
+            "help": "CN7.24",
+            "cost": 0
+          }
+        ],
+        "ML25": [
+          {
+            "name": "PC14",
+            "help": "CN7.25. Close SB23 solder bridge.",
+            "cost": 10
+          }
+        ],
+        "ML26": [
+          {
+            "name": "PD5",
+            "help": "CN7.26",
+            "cost": 0
+          }	  
+        ],
+        "ML27": [
+          {
+            "name": "PC15",
+            "help": "CN7.27. Close SB24 solder bridge.",
+            "cost": 10
+          }
+        ],
+        "ML28": [
+          {
+            "name": "PA0",
+            "help": "CN7.28",
+            "cost": 0
+          }
+        ],
+        "ML29": [
+          {
+            "name": "PF0",
+            "help": "CN7.29. Close SB25 solder bridge (factory default).",
+            "cost": 0
+          }
+        ],
+        "ML30": [
+          {
+            "name": "PA1",
+            "help": "CN7.30",
+            "cost": 0
+          }
+        ],
+        "ML31": [
+          {
+            "name": "PF1",
+            "help": "CN7.31. Close SB27 solder bridge (factory default).",
+            "cost": 0
+          }
+        ],
+        "ML32": [
+          {
+            "name": "PA4",
+            "help": "CN7.32",
+            "cost": 0
+          }
+        ],
+        "ML33": [
+          {
+            "name": "VBAT",
+            "help": "CN7.33",
+            "cost": 0
+          }
+        ],
+        "ML34": [
+          {
+            "name": "PB1",
+            "help": "CN7.34",
+            "cost": 0
+          },
+          {
+            "name": "PD3",
+            "help": "External wire required between CN7.34 and CN7.11",
+            "cost": 10
+          }			  
+        ],
+        "ML35": [
+          {
+            "name": "PC2",
+            "help": "CN7.35",
+            "cost": 0
+          },
+          {
+            "name": "PC4",
+            "help": "External wire required between CN7.35 and CN10.35",
+            "cost": 10
+          }
+		  
+        ],
+        "ML36": [
+          {
+            "name": "PB11",
+            "help": "CN7.36. Close SB4 solder bridge and open SB2 (factory default)",
+            "cost": 0
+          },
+          {
+            "name": "PB9",
+            "help": "CN7.36. Close SB2 solder bridge and open SB4",
+            "cost": 10
+          }
+        ],
+        "ML37": [
+          {
+            "name": "PC3",
+            "help": "CN7.37",
+            "cost": 0
+          }
+        ],
+        "ML38": [
+          {
+            "name": "PB12",
+            "help": "CN7.38. Close SB3 solder bridge and open SB5 (factory default)",
+            "cost": 0
+          },
+          {
+            "name": "PB8",
+            "help": "CN7.38. Close SB5 solder bridge and open SB3",
+            "cost": 10
+          }		  
+        ],
+        "MR1": [
+          {
+            "name": "PC9",
+            "help": "CN10.1",
+            "cost": 0
+          }
+        ],
+        "MR2": [
+          {
+            "name": "PC8",
+            "help": "CN10.2",
+            "cost": 0
+          }
+        ],
+        "MR3": [
+          {
+            "name": "PB8",
+            "help": "CN10.3. Close SB2 solder bridge (factory default)",
+            "cost": 0
+          }
+        ],
+        "MR4": [
+          {
+            "name": "PC6",
+            "help": "CN10.4",
+            "cost": 0
+          }
+        ],
+        "MR5": [
+          {
+            "name": "PB9",
+            "help": "CN10.5",
+            "cost": 0
+          }
+        ],
+        "MR6": [
+          {
+            "name": "PA3",
+            "help": "CN10.6",
+            "cost": 0
+          }
+        ],
+        "MR7": [
+          {
+            "name": "VREF+",
+            "help": "CN10.7 AVDD connected to VREF+. Close SB21 solder bridge.",
+            "cost": 10
+          }
+        ],
+        "MR8": [
+          {
+            "name": "5V_USB_CHGR",
+            "help": "CN10.8 5V_USB_CHGR is the 5 V power from the STLINK-V3E USB connector that rises first.\n It rises before the 5 V rising on the board",
+            "cost": 0
+          }
+        ],
+        "MR9": [
+          {
+            "name": "AGND",
+            "help": "CN10.9",
+            "cost": 0
+          }
+        ],
+        "MR10": [
+          {
+            "name": "PD6",
+            "help": "CN10.10",
+            "cost": 0
+          }
+        ],
+        "MR11": [
+          {
+            "name": "PA5",
+            "help": "CN10.11",
+            "cost": 0
+          }
+        ],
+        "MR12": [
+          {
+            "name": "PA12 [PA10]",
+            "help": "CN10.12",
+            "cost": 0
+          }
+        ],
+        "MR13": [
+          {
+            "name": "PA6",
+            "help": "CN10.13",
+            "cost": 0
+          }		  
+        ],
+        "MR14": [
+          {
+            "name": "PA11 [PA9]",
+            "help": "CN10.14",
+            "cost": 0
+          },
+          {
+            "name": "PA6",
+            "help": "External wire required between CN10.14 and CN10.13",
+            "cost": 10
+          },
+          {
+            "name": "PD5",
+            "help": "External wire required between CN10.14 and CN7.26",
+            "cost": 10
+          },
+          {
+            "name": "PB12",
+            "help": "External wire required between CN10.14 and CN7.38. Close SB3 solder bridge and open SB5 (factory default)",
+            "cost": 10
+          }		  
+        ],
+        "MR15": [
+          {
+            "name": "PA7",
+            "help": "CN10.15",
+            "cost": 0
+          }
+        ],
+        "MR16": [
+          {
+            "name": "PC1",
+            "help": "CN10.16",
+            "cost": 0
+          }
+        ],
+        "MR17": [
+          {
+            "name": "PB0",
+            "help": "CN10.17",
+            "cost": 0
+          }
+        ],
+        "MR18": [
+          {
+            "name": "PC0",
+            "help": "CN10.18",
+            "cost": 0
+          }
+        ],
+        "MR19": [
+          {
+            "name": "PC7",
+            "help": "CN10.19",
+            "cost": 0
+          }
+        ],
+        "MR20": [
+          {
+            "name": "GND",
+            "help": "CN10.20",
+            "cost": 0
+          }
+        ],
+        "MR21": [
+          {
+            "name": "PA9",
+            "help": "CN10.21",
+            "cost": 0
+          }
+        ],
+        "MR22": [
+          {
+            "name": "PB2",
+            "help": "CN10.22",
+            "cost": 0
+          }	  
+        ],
+        "MR23": [
+          {
+            "name": "PA8",
+            "help": "CN10.23",
+            "cost": 0
+          }
+        ],
+        "MR24": [
+          {
+            "name": "PB6",
+            "help": "CN10.24",
+            "cost": 0
+          },
+          {
+            "name": "PD4",
+            "help": "External wire is required between CN10.24 and CN7.15",
+            "cost": 10
+          },
+          {
+            "name": "PB2",
+            "help": "Add an external connection between CN10.24 and CN10.22",
+            "cost": 10
+          }			  
+        ],
+        "MR25": [
+          {
+            "name": "PB14",
+            "help": "CN10.25",
+            "cost": 0
+          }
+        ],
+        "MR26": [
+          {
+            "name": "PB15",
+            "help": "CN10.26",
+            "cost": 0
+          }
+        ],
+        "MR27": [
+          {
+            "name": "PB4",
+            "help": "CN10.27",
+            "cost": 0
+          }
+        ],
+        "MR28": [
+          {
+            "name": "PB10",
+            "help": "CN10.28",
+            "cost": 0
+          }
+        ],
+        "MR29": [
+          {
+            "name": "PB5",
+            "help": "CN10.29",
+            "cost": 0
+          }
+        ],
+        "MR30": [
+          {
+            "name": "PB13",
+            "help": "CN10.30",
+            "cost": 0
+          }
+        ],
+        "MR31": [
+          {
+            "name": "PB3",
+            "help": "CN10.31",
+            "cost": 0
+          }
+        ],
+        "MR32": [
+          {
+            "name": "AGND",
+            "help": "CN10.32",
+            "cost": 0
+          }
+        ],
+        "MR33": [
+          {
+            "name": "PA10",
+            "help": "CN10.33",
+            "cost": 0
+          }
+        ],
+        "MR34": [
+          {
+            "name": "PA2",
+            "help": "CN10.34.",
+            "cost": 0
+          }
+        ],
+        "MR35": [
+          {
+            "name": "PC4",
+            "help": "CN10.35",
+            "cost": 0
+          }
+        ],
+        "MR36": [
+          {
+            "name": "PD8",
+            "help": "CN10.36",
+            "cost": 0
+          }
+        ],
+        "MR37": [
+          {
+            "name": "PC5",
+            "help": "CN10.37",
+            "cost": 0
+          }
+        ],
+        "MR38": [
+          {
+            "name": "PD9",
+            "help": "CN10.38",
+            "cost": 0
+          },
+          {
+            "name": "PA6",
+            "help": "External wire required between CN10.38 and CN10.13",
+            "cost": 10
+          },
+          {
+            "name": "PD5",
+            "help": "External wire required between CN10.38 and CN7.26",
+            "cost": 10
+          },
+          {
+            "name": "PB12",
+            "help": "External wire required between CN10.38 and CN7.38. Close SB3 solder bridge and open SB5 (factory default)",
+            "cost": 10
+          }			  
+        ]
+      },
+      "features": []
+    }
+  ],
+  "features": [
+    {
+      "name": "StartStopButton",
+      "type": "Button",
+      "hwVariants": [
+        {
+          "type": "PushButton",
+          "help": "",
+          "signals": {
+            "BUTTON_TRIGGER": [
+              {
+                "name": "PC13",
+                "help": "",
+                "cost": 0
+              }
+            ]
+          },
+          "buttonTriggerEdge": "Falling Edge",
+          "buttonGpioConfig": "No Pull up - No Pull down"
+        }
+      ]
+    },
+    {
+      "name": "SerialPortCommunication",
+      "type": "SerialPortCommunication",
+      "hwVariants": [
+        {
+          "type": "Uart2WiresCommunication",
+          "help": "",
+          "signals": {
+            "UART_TX": [
+              {
+                "name": "PA2",
+                "help": "CN10.35. Close SB16 solder bridge STLK_TX (factory default)",
+                "cost": 0
+              }
+            ],
+            "UART_RX": [
+              {
+                "name": "PA3",
+                "help": "CN10.37. Close SB18 solder bridge STLK_RX (factory default)",
+                "cost": 0
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

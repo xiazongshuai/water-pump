@@ -1,0 +1,22 @@
+{
+    "hardwareFamily": "MOTOR",
+    "label": "AOKU_v4",
+    "description": "AOKU PMSM Motor",
+    "polePairs": 2,
+    "nominalCurrent": 2,
+    "nominalDCVoltage": 14.8,
+    "rs":48.5,
+    "ls": 205,
+    "magneticStructure": {
+        "type": "SM-PMSM"
+    },
+    "BEmfConstant": 50.4,
+    "inertia": 0.29145252256057574,
+    "friction": 0.9371463534080249,
+    "maxRatedSpeed": 3200,
+    "compatibility": [
+        "FOC",
+        "sixStep"
+    ],
+    "id": "AOKU_v4"
+}

@@ -1,0 +1,107 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.37.0.0
+Copyright (C) 2022 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: shuai Lenovo, xia, LIC=YA39H-W102V-PC9J8-3457L-M93M4-1ZGS5
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.37.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.18
+Assembler:       Armasm.exe V6.18
+Linker/Locator:  ArmLink.exe V6.18
+Library Manager: ArmAr.exe V6.18
+Hex Converter:   FromElf.exe V6.18
+CPU DLL:         SARMCM3.DLL V5.37.0.0
+Dialog DLL:      DARMCM1.DLL V1.19.6.0
+Target DLL:      Segger\JL2CM3.dll V2.99.42.0
+Dialog DLL:      TARMCM1.DLL V1.14.6.0
+ 
+<h2>Project:</h2>
+C:\Users\Lenovo\Desktop\4\ST_AOKU_WATERPUMP_G030 _180W\1111\180-1\120W\zhang\AUCU_Board_230220_G030_Keil_v6\MDK-ARM\AUCU_Board_230220_G030_Keil_v6.uvprojx
+Project File Date:  05/16/2023
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'AOKU_Board_230220_G030_Keil_v6'
+compiling mc_configuration_registers.c...
+compiling mc_parameters.c...
+compiling motorcontrol.c...
+compiling mc_tasks.c...
+compiling mcp_config.c...
+compiling mc_config.c...
+compiling aspep.c...
+compiling register_interface.c...
+compiling mc_interface.c...
+../Src/main.c(28): warning: In file included from...
+../USER/App\handle_console_pid.h(21): warning: 'packed' attribute ignored [-Wignored-attributes]
+typedef __packed struct
+        ^
+../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_def.h(114): note: expanded from macro '__packed'
+    #define __packed  __attribute__((packed))
+                                     ^
+1 warning generated.
+compiling main.c...
+compiling stm32g0xx_mc_it.c...
+compiling circle_limitation.c...
+compiling stm32g0xx_it.c...
+compiling stm32g0xx_hal_msp.c...
+../MCSDK_v6.1.0-Full/MotorControl/MCSDK/MCLib/Any/Src/speed_torq_ctrl.c(510): warning: extra tokens at end of #ifndef directive [-Wextra-tokens]
+#ifndef FULL_MISRA_C_COMPLIANCY_SPD_TORQ_CTRL.
+                                             ^
+                                             //
+1 warning generated.
+compiling speed_torq_ctrl.c...
+compiling User_Logic.c...
+compiling usart_handle.c...
+compiling r3_g0xx_pwm_curr_fdbk.c...
+compiling adc_cin.c...
+compiling mcp.c...
+compiling led_key.c...
+compiling pwm_mode.c...
+compiling app_handle.c...
+compiling lin.c...
+compiling app_error.c...
+../USER/App/handle_console_pid.c(1): warning: In file included from...
+../USER/App/handle_console_pid.h(21): warning: 'packed' attribute ignored [-Wignored-attributes]
+typedef __packed struct
+        ^
+../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_def.h(114): note: expanded from macro '__packed'
+    #define __packed  __attribute__((packed))
+                                     ^
+1 warning generated.
+compiling handle_console_pid.c...
+compiling app_mode.c...
+linking...
+Program Size: Code=33108 RO-data=3656 RW-data=1392 ZI-data=6584  
+FromELF: creating hex file...
+".\output\AUCU_Board_230220_G030_Keil_v6.axf" - 0 Error(s), 3 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.9.0.pack
+                ARM.CMSIS.5.9.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.6.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32G0xx_DFP.1.4.0.pack
+                Keil.STM32G0xx_DFP.1.4.0
+                STMicroelectronics STM32G0 Series Device Support
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_AOKU_Board_230220_G030_Keil_v6
+  E:/software/keil_537/ARM/CMSIS/5.9.0/CMSIS/Core/Include
+  E:/software/keil_537/Keil/STM32G0xx_DFP/1.4.0/Drivers/CMSIS/Device/ST/STM32G0xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.6.0
+Build Time Elapsed:  00:00:10
+</pre>
+</body>
+</html>
